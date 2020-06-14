@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    transform: translate(-50%, -50%);
+}
+
+.ico {
+    display: inline-block;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #000;
+    font-style: normal;
+    border-radius: 50%;
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.tooltipContentWrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.tooltipContentBg {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    opacity: 0;
+}
+
+.tooltipContent {
+    position: relative;
+    display: none;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 8px solid transparent;
+        border-top: 8px solid #ccc;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top: 6px solid #fff;
+    }
+
+    &.isReady {
+        display: inline-block;
+    }
+}
+
+@keyframes tooltip {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tooltipShowAnim {
+    animation: tooltip .2s ease-out;
+}
+
+.tooltipHideAnim {
+    animation: tooltip .1s ease-in reverse;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>tooltip</title>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <p>
+        Simple<i class="ico" data-tooltip-content="Message">?</i>
+    </p>
+    <pre style="margin-bottom: 40px;">simple&lt;i class="ico" data-tooltip-content="Message"&gt;?&lt;/i&gt;</pre>
+    <p>
+        HTML<i class="ico" data-tooltip-content="#content">?</i>
+    </p>
+    <pre>
+HTML&lt;i class="ico" data-tooltip-content="#content"&gt;?&lt;/i&gt;
+&lt;div id="content" class="tooltipContent"&gt;
+    &lt;p&gt;&lt;b&gt;Title&lt;/b&gt;&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contents&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contents&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Contents&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+
+</div>
+
+<div id="content" class="tooltipContent">
+    <p><b>Title</b></p>
+    <ul>
+        <li><a href="#">Contents</a></li>
+        <li><a href="#">Contents</a></li>
+        <li><a href="#">Contents</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

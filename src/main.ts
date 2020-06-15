@@ -13,33 +13,36 @@ $(() => {
             const $target:JQuery = $(element);
             const id:string = 'tooltip-' + index;
             let content:string = $target.attr('data-tooltip-content');
-            let $contentWrap:JQuery;
+            let $contentWrap:JQuery = $('<div class="tooltipContentWrap"></div>');
+            let $contentBg:JQuery = $('<div class="tooltipContentBg"></div>');
             let $content:JQuery;
 
-            function setPos():void {
-                $contentWrap.css({
-                    width: $contentBg.width(),
-                    height: $contentBg.height(),
-                    bottom: $(document).height() - $target.offset().top - $target.outerHeight(),
-                    left: $target.offset().left + ($target.outerWidth() / 2) - ($contentBg.outerWidth() / 2)
-                });
-            }
-
             function show(e:Event):void {
-                setPos();
                 $target.attr('aria-describedby', id);
+
+                $contentWrap.appendTo($body);
+
+                $contentBg
+                    .css({
+                        width: $content.outerWidth(),
+                        height: $content.outerHeight() + $target.outerHeight() + 10
+                    });
+
                 $contentWrap
-                    .appendTo($body)
+                    .css({
+                        width: $contentBg.width(),
+                        height: $contentBg.height(),
+                        top: $target.offset().top + $target.outerHeight() - $contentBg.height(),
+                        left: $target.offset().left + ($target.outerWidth() / 2) - ($contentBg.outerWidth() / 2)
+                    })
                     .on('animationend.tooltip', () => {
                         $contentWrap
                             .removeClass('tooltipShowAnim')
                             .off('animationend.tooltip');
                     })
                     .attr('id', id)
-                    .addClass('isShow')
-                    .addClass('tooltipShowAnim');
-
-                $contentWrap.on('mouseleave.tooltip', hide);
+                    .addClass('tooltipShowAnim')
+                    .on('mouseleave.tooltip', hide);
             }
 
             function hide(e:Event):void {
@@ -56,8 +59,6 @@ $(() => {
                     .addClass('tooltipHideAnim');
             }
 
-            $contentWrap = $('<div class="tooltipContentWrap"></div>');
-
             if (content.substr(0, 1) === '#') {
                 $content = $(content);
             } else {
@@ -66,16 +67,7 @@ $(() => {
             }
 
             $content.addClass('isReady');
-
-            const $contentBg:JQuery = $('<div class="tooltipContentBg"></div>');
-            $contentBg
-                .css({
-                    width: $content.outerWidth(),
-                    height: $content.outerHeight() + $target.outerHeight() + 10
-                });
-
             $contentWrap.append($contentBg, $content);
-
             $target.on('mouseenter.tooltip', show);
         });
 

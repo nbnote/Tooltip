@@ -2,10 +2,6 @@ import "./style.scss";
 
 import $ from "jquery";
 
-function trace(val:any):void {
-    console.log(val);
-}
-
 $(() => {
     $('[data-tooltip-content]')
         .each((index:number, element:HTMLElement) => {
@@ -30,8 +26,6 @@ $(() => {
 
                 $contentWrap
                     .css({
-                        width: $contentBg.width(),
-                        height: $contentBg.height(),
                         top: $target.offset().top + $target.outerHeight() - $contentBg.height(),
                         left: $target.offset().left + ($target.outerWidth() / 2) - ($contentBg.outerWidth() / 2)
                     })
@@ -41,11 +35,33 @@ $(() => {
                             .off('animationend.tooltip');
                     })
                     .attr('id', id)
-                    .addClass('tooltipShowAnim')
-                    .on('mouseleave.tooltip', hide);
+                    .addClass('tooltipShowAnim');
+
+                $body.on('mousemove.tooltip-' + index, (e:Event) => {
+                    let $eventTarget:JQuery = $(e.target as HTMLElement);
+
+                    if ($eventTarget.attr('data-tooltip-content') === content) {
+                        return;
+                    }
+
+                    let $contentWrap:JQuery;
+
+                    if ($eventTarget.hasClass('tooltipContentWrap')) {
+                        $contentWrap = $eventTarget;
+                    } else {
+                        $contentWrap = $eventTarget.parents('.tooltipContentWrap');
+                    }
+
+                    if ($contentWrap.attr('id') === 'tooltip-' + index) {
+                        return;
+                    }
+
+                    $body.off('mousemove.tooltip-' + index);
+                    hide();
+                });
             }
 
-            function hide(e:Event):void {
+            function hide():void {
                 $target.removeAttr('aria-describedby');
                 $contentWrap
                     .on('animationend.tooltip', () => {
@@ -60,7 +76,7 @@ $(() => {
             }
 
             if (content.substr(0, 1) === '#') {
-                $content = $(content);
+                $content = $(content).clone();
             } else {
                 $content = $('<div class="tooltipContent">' + content + '</div>');
                 $content.appendTo($body);
@@ -70,6 +86,4 @@ $(() => {
             $contentWrap.append($contentBg, $content);
             $target.on('mouseenter.tooltip', show);
         });
-
-    $('#content').attr('aria-hidden', 'true');
 });

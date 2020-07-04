@@ -41,8 +41,8 @@ $(() => {
 
                 $contentWrap.appendTo($body);
 
-                const width:number = $content.outerWidth();
-                const height:number = $content.outerHeight();
+                const width:number = $content.outerWidth() + 1;
+                const height:number = $content.outerHeight() + 1;
 
                 const posTop:{ [s:string]:number } = {
                     top: $target.offset().top + $target.outerHeight() - (height + $target.outerHeight() + 10),

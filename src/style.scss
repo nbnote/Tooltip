@@ -53,7 +53,6 @@ pre {
 }
 
 .tooltipContent {
-    position: absolute;
     display: none;
     padding: 5px 10px;
     background: #fff;
@@ -65,6 +64,7 @@ pre {
     }
 
     &--top {
+        position: absolute;
         top: 0;
         left: 0;
 
@@ -90,6 +90,7 @@ pre {
     }
 
     &--bottom {
+        position: absolute;
         bottom: 0;
         left: 0;
 
@@ -115,6 +116,7 @@ pre {
     }
 
     &--left {
+        position: absolute;
         top: 0;
         left: 0;
 
@@ -142,6 +144,7 @@ pre {
     }
 
     &--right {
+        position: absolute;
         top: 0;
         right: 0;
 

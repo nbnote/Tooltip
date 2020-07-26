@@ -36,23 +36,10 @@ pre {
     cursor: pointer;
 }
 
-.tooltipContentWrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: inline-block;
-}
-
-.tooltipContentBg {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
-    opacity: 0;
-}
-
 .tooltipContent {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     padding: 5px 10px;
     background: #fff;
@@ -64,10 +51,6 @@ pre {
     }
 
     &--top {
-        position: absolute;
-        top: 0;
-        left: 0;
-
         &::before {
             content: "";
             position: absolute;
@@ -90,10 +73,6 @@ pre {
     }
 
     &--bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-
         &::before {
             content: "";
             position: absolute;
@@ -116,10 +95,6 @@ pre {
     }
 
     &--left {
-        position: absolute;
-        top: 0;
-        left: 0;
-
         &::before {
             content: "";
             position: absolute;
@@ -144,10 +119,6 @@ pre {
     }
 
     &--right {
-        position: absolute;
-        top: 0;
-        right: 0;
-
         &::before {
             content: "";
             position: absolute;

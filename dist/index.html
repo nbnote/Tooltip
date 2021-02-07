@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>tooltip</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="main.js"></script>
 </head>
 <body>
@@ -16,7 +18,7 @@
     <p>
         HTML1<i class="ico" data-tooltip-content="#content">?</i>&nbsp;&nbsp;&nbsp;&nbsp;HTML2<i class="ico" data-tooltip-content="#content">?</i>
     </p>
-    <pre>
+    <pre style="margin-bottom: 40px;">
 HTML1&lt;i class="ico" data-tooltip-content="#content"&gt;?&lt;/i&gt;
 HTML2&lt;i class="ico" data-tooltip-content="#content"&gt;?&lt;/i&gt;
 
@@ -28,6 +30,16 @@ HTML2&lt;i class="ico" data-tooltip-content="#content"&gt;?&lt;/i&gt;
         &lt;li&gt;&lt;a href="#"&gt;Contents&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/div&gt;</pre>
+    <p>
+        JavaScript
+    </p>
+    <pre>
+$(() => {
+    $('[data-tooltip-content]')
+        .each((index, element) => {
+            new Tooltip(index, element);
+        });
+});</pre>
 
 </div>
 

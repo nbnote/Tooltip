@@ -6,11 +6,14 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: "Roboto", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
 }
 
 pre {
-    padding: 10px;
-    border: 1px solid #000;
+    padding: 16px;
+    background: #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15) inset;
 }
 
 .container {
@@ -23,17 +26,18 @@ pre {
 
 .ico {
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 30px;
-    border: 1px solid #000;
+    border: 1px solid #465EFB;
     font-style: normal;
     border-radius: 50%;
     margin-left: 5px;
     vertical-align: middle;
     cursor: pointer;
+    color: #465EFB;
 }
 
 .tooltipContent {
@@ -41,10 +45,11 @@ pre {
     top: 0;
     left: 0;
     display: none;
-    padding: 5px 10px;
+    padding: 8px 16px;
     background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
 
     &.isReady {
         display: inline-block;
@@ -58,7 +63,7 @@ pre {
             left: 50%;
             transform: translateX(-50%);
             border: 8px solid transparent;
-            border-top: 8px solid #ccc;
+            border-top: 8px solid #ddd;
         }
 
         &::after {
@@ -80,7 +85,7 @@ pre {
             left: 50%;
             transform: translateX(-50%);
             border: 8px solid transparent;
-            border-bottom: 8px solid #ccc;
+            border-bottom: 8px solid #ddd;
         }
 
         &::after {
@@ -101,7 +106,7 @@ pre {
             top: 50%;
             right: -8px;
             transform: translateY(-50%);
-            border-left: 8px solid #ccc;
+            border-left: 8px solid #ddd;
             border-top: 8px solid transparent;
             border-bottom: 8px solid transparent;
         }
@@ -125,7 +130,7 @@ pre {
             top: 50%;
             left: -8px;
             transform: translateY(-50%);
-            border-right: 8px solid #ccc;
+            border-right: 8px solid #ddd;
             border-top: 8px solid transparent;
             border-bottom: 8px solid transparent;
         }
